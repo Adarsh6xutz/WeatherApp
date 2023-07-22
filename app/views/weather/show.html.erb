@@ -1,0 +1,19 @@
+<h1>Weather App</h1>
+
+<%= form_tag('/weather', method: :get) do %>
+  <div>
+    <%= label_tag :city %>
+    <%= text_field_tag :city, params[:city] %>
+    <%= submit_tag 'Get Weather' %>
+  </div>
+<% end %>
+
+<% if @temperature && @description %>
+  <h2>Weather in <%= params[:city] %>:</h2>
+  <p>Temperature: <%= @temperature %> K</p>
+  <p>Description: <%= @description %></p>
+<% end %>
+
+<%= form_with(url: '/logout', method: :delete) do |f| %>
+  <%= f.submit 'Logout'%>
+<% end %>
