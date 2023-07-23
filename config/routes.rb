@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   get '/weather', to: 'weather#show'
 
-  delete '/logout', to: 'users#destroy_session', as: :logout
+  delete '/logout', to: 'users#destroy_session'
 end

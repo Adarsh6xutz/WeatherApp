@@ -10,9 +10,11 @@
 
 <% if @temperature && @description %>
   <h2>Weather in <%= params[:city] %>:</h2>
-  <p>Temperature: <%= @temperature %> K</p>
+  <p>Temperature: <%= @temperature %> C</p>
   <p>Description: <%= @description %></p>
 <% end %>
+
+<br>
 
 <%= form_with(url: '/logout', method: :delete) do |f| %>
   <%= f.submit 'Logout'%>

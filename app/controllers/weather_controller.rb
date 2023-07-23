@@ -5,12 +5,10 @@ class WeatherController < ApplicationController
     city_name = params[:city]
 
     if city_name.present?
-      @weather_data = @weather_service.get_weather_by_city(city_name)
-      if @weather_data
-        @temperature = @weather_data.dig('main', 'temp')
-        @description = @weather_data.dig('weather', 0, 'description')
-      else
-        flash.now[:alert] = "Weather data for '#{city_name}' not found."
+      weather_data = @weather_service.get_weather_by_city(city_name)
+      if weather_data
+        @temperature = (weather_data.dig('main', 'temp') - 273.15).round(2)
+        @description = weather_data.dig('weather', 0, 'description')
       end
     end
   end
