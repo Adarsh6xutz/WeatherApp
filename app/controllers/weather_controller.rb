@@ -6,7 +6,7 @@ class WeatherController < ApplicationController
 
     if city_name.present?
       weather_data = @weather_service.get_weather_by_city(city_name)
-      if weather_data
+      if weather_data.present? && weather_data['cod'] < 400
         @temperature = (weather_data.dig('main', 'temp') - 273.15).round(2)
         @description = weather_data.dig('weather', 0, 'description')
       end
